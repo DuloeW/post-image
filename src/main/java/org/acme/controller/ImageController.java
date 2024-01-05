@@ -29,4 +29,13 @@ public class ImageController {
     public Response getAllImage() {
         return imageService.getAllImage();
     }
+
+    @POST
+    @Path("/uploud")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Transactional
+    public Response uploudFile(@MultipartForm ImageBody body) throws IOException {
+        return imageService.uploudFile(body);
+    }
 }

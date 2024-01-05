@@ -35,6 +35,7 @@ public class ImagePostController {
     imageEntity.setFile(formData.file.readAllBytes());
     imageEntity.setId(generateId());
 
+
     entityManager.persist(imageEntity);
     return Response
       .ok("File uploaded and saved in MySQL successfully!")
