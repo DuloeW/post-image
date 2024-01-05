@@ -1,0 +1,15 @@
+quarkus:
+  log:
+    level: INFO
+  http:
+    port: 8790
+  datasource:
+    db-kind: mysql
+    username: root
+    password: ""
+    jdbc:
+      url: jdbc:mysql://localhost:3306/penilaian_karyawan
+  hibernate-orm:
+    database:
+      generation:
+        ~: none
