@@ -2,7 +2,6 @@ package org.acme.model.body;
 
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.core.MediaType;
-import lombok.Getter;
 
 import java.io.IOException;
 import java.io.InputStream;

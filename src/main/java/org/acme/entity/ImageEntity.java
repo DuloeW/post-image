@@ -1,6 +1,7 @@
 package org.acme.entity;
 
 import java.util.List;
+import java.util.Optional;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
@@ -22,5 +23,9 @@ public class ImageEntity extends PanacheEntityBase {
 
     public static List<ImageEntity> findAllImage() {
         return ImageEntity.listAll();
+    }
+
+    public static Optional<ImageEntity> findImageById(Long id) {
+        return find("id =? 1", id).firstResultOptional();
     }
 }
