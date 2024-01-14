@@ -6,21 +6,13 @@ import jakarta.ws.rs.core.Response;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
-import java.util.Objects;
+import java.util.Base64;
 import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import org.acme.entity.ImageEntity;
 import org.acme.model.body.ImageBody;
-import org.acme.util.FileData;
-import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import io.smallrye.mutiny.Uni;
 
@@ -67,12 +59,13 @@ public class ImageService {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(resizedImage, "jpg", byteArrayOutputStream);
             byte[] imageBytes = byteArrayOutputStream.toByteArray();
-            imageEntity.setFile(imageBytes);
+            String imageString = Base64.getEncoder().encodeToString(imageBytes);
+            imageEntity.setFile(imageString);
 
             // Simpan ke dalam basis data
             imageEntity.persist();
 
-            return Uni.createFrom().item(Response.ok("Gambar berhasil diresize dan disimpan ke dalam database.").build());
+            return Uni.createFrom().item(Response.ok("{\"message\" : \"Gambar berhasil diresize dan disimpan ke dalam database\" }").build());
         } catch (IOException e) {
             return Uni.createFrom().failure(e);
         }

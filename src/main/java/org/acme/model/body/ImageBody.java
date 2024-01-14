@@ -24,7 +24,7 @@ public class ImageBody {
     var image = new ImageEntity();
     image.id = generateId();
     image.fileName = fileName;
-    image.file = file.readAllBytes();
+    // image.file = file.readAllBytes();
     return image;
   }
 

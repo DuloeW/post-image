@@ -19,7 +19,7 @@ public class ImageEntity extends PanacheEntityBase {
     public String fileName;
 
     @Column(name = "file_content", columnDefinition = "blob")
-    public byte[] file;
+    public String file;
 
     public static List<ImageEntity> findAllImage() {
         return ImageEntity.listAll();

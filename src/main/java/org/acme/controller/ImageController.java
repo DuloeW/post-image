@@ -41,7 +41,7 @@ public class ImageController {
     @POST
     @Path("/uploud")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Uni<Response> uploudFile(@MultipartForm ImageBody body) throws IOException {
         return imageService.uploudFile(body);
